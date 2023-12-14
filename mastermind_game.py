@@ -31,6 +31,7 @@ class Mastermind:
         self.init_gameplay()
         self.get_name()
         self.wn.onclick(self.on_click) # screen 'wn' listening for clicks
+        self.wn.mainloop()
         
     def on_click(self, x, y):
         '''
