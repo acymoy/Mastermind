@@ -20,7 +20,7 @@ COLORS = ['red', 'blue', 'green', 'yellow', 'purple', 'black']
 
 class Mastermind:
     def __init__(self):
-        logging.basicConfig(filename='mastermind_errors.err',
+        logging.basicConfig(filename='./logs/mastermind_errors.err',
                             encoding='utf8',
                             level=logging.DEBUG,
                             format='%(asctime)s %(message)s')
@@ -205,14 +205,14 @@ class Mastermind:
         returns: none
         '''
         try:
-            self.wn.register_shape('xbutton.gif')
-            self.wn.register_shape('checkbutton.gif')
-            self.wn.register_shape('leaderboard_error.gif')
-            self.wn.register_shape('Lose.gif')
-            self.wn.register_shape('quitbutton.gif')
-            self.wn.register_shape('quitmsg.gif')
-            self.wn.register_shape('winner.gif')
-            self.wn.register_shape('pogchamp.gif')
+            self.wn.register_shape('./assets/xbutton.gif')
+            self.wn.register_shape('./assets/checkbutton.gif')
+            self.wn.register_shape('./assets/leaderboard_error.gif')
+            self.wn.register_shape('./assets/Lose.gif')
+            self.wn.register_shape('./assets/quitbutton.gif')
+            self.wn.register_shape('./assets/quitmsg.gif')
+            self.wn.register_shape('./assets/winner.gif')
+            self.wn.register_shape('./assets/pogchamp.gif')
         except:
             logging.error('failed to register gif image')
 
@@ -228,16 +228,16 @@ class Mastermind:
             - quitbutton at 170, -185 to 220, -215
         '''
         try:
-            self.xbutton = Turtle(shape='xbutton.gif')
+            self.xbutton = Turtle(shape='./assets/xbutton.gif')
             self.xbutton.up()
             self.xbutton.setposition(XBUTTON_COORDS)
-            self.checkbutton = Turtle(shape='checkbutton.gif')
+            self.checkbutton = Turtle(shape='./assets/checkbutton.gif')
             self.checkbutton.up()
             self.checkbutton.setpos(CHECKBUTTON_COORDS)
-            self.quit = Turtle(shape='quitbutton.gif')
+            self.quit = Turtle(shape='./assets/quitbutton.gif')
             self.quit.up()
             self.quit.setpos(QUITBUTTON_COORDS)
-            self.pog = Turtle(shape='pogchamp.gif')
+            self.pog = Turtle(shape='./assets/pogchamp.gif')
             self.pog.up()
             self.pog.setpos(POGCHAMP_COORDS)
         except:
@@ -458,7 +458,7 @@ class Mastermind:
         num_scores = []
         raw_scores = []
         try:
-            with open('leaderboard.txt', mode='r', encoding='utf8') \
+            with open('./leaderboard/leaderboard.txt', mode='r', encoding='utf8') \
                  as scores:
                 for line in scores:
                     raw_scores.append(line)
@@ -490,7 +490,7 @@ class Mastermind:
         for score in self.leaderboard:
             joined_scores.append(f'{score[0]}@{score[1]}')
         try:
-            with open('leaderboard.txt', mode='w', encoding='utf8') as end:
+            with open('./leaderboard/leaderboard.txt', mode='w', encoding='utf8') as end:
                 for score in joined_scores:
                     end.write(f'{score}\n')
         except Exception:
@@ -509,15 +509,15 @@ class Mastermind:
         '''
         try:
             if condition == 'win':
-                image = 'winner.gif'
+                image = './assets/winner.gif'
             elif condition == 'lose':
-                image = 'Lose.gif'
+                image = './assets/Lose.gif'
             elif condition == 'quit':
-                image = 'quitmsg.gif'
+                image = './assets/quitmsg.gif'
             elif condition == 'leaderboard_error':
-                image = 'leaderboard_error.gif'
+                image = './assets/leaderboard_error.gif'
             elif condition == 'file_error':
-                image = 'file_error.gif'
+                image = './assets/file_error.gif'
             self.popup = Turtle(shape=image)
             self.popup.setpos(0, 0) # popup is at center of screen
         except:
